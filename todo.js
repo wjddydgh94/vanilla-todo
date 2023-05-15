@@ -1,6 +1,6 @@
-const toDoForm = document.getElementById("todo_form");
-const toDoInput = toDoForm.querySelector("input");
-const toDoList = document.getElementById("todo_list");
+const toDoForm = document.getElementById("todo-form");
+const toDoInput = toDoForm.querySelector("#todo-input");
+const toDoList = document.getElementById("todo-list");
 
 function paintTodo(newTodo) {
   const li = document.createElement("li");
@@ -15,7 +15,7 @@ function paintTodo(newTodo) {
   toDoList.appendChild(li);
 }
 
-function handleTodoSubmit(event) {
+function handleAddTodo(event) {
   event.preventDefault();
   const newTodo = toDoInput.value;
   toDoInput.value = "";
@@ -27,4 +27,14 @@ function handleDeleteTodo(event) {
   li.remove();
 }
 
-toDoForm.addEventListener("submit", handleTodoSubmit);
+toDoForm.addEventListener("submit", handleAddTodo);
+
+const initialState = ["asdf", "qwer", "zxcv"];
+
+function getInitial(initialState) {
+  initialState.forEach((element) => {
+    paintTodo(element);
+  });
+}
+
+getInitial(initialState);
